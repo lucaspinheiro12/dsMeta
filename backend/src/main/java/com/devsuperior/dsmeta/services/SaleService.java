@@ -25,25 +25,11 @@ public class SaleService {
 	private SaleRepository repository;
 
 	public Page<Sale> findSales (String minDate, String maxDate, Pageable pageable) {
-		
+	
 		LocalDate today = LocalDate.now();
-		LocalDate min ;
-		LocalDate max ;
-		if(minDate.equals("")) {
-			LocalDate mini = today.minusDays(365);
-			min = mini;
-		}else {
-			LocalDate mini = LocalDate.parse(minDate);
-			min = mini;
-		}
-		if(maxDate.equals("")) {
-			LocalDate maxi = today;
-			max = maxi;
-		}else {
-			LocalDate maxi = LocalDate.parse(maxDate);
-			max = maxi;
-		}
-			
+		LocalDate max =maxDate.equals("") ? today : LocalDate.parse(maxDate);
+		LocalDate min =minDate.equals("") ? today.minusDays(365) : LocalDate.parse(minDate);
+		
 		return repository.findSales(min, max, pageable);
 	}
 }
