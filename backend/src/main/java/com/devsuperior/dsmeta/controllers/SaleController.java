@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.dsmeta.entities.Sale;
 import com.devsuperior.dsmeta.services.SaleService;
-//import com.devsuperior.dsmeta.services.SmsService;
 import com.devsuperior.dsmeta.services.SmsService;
 
 
@@ -23,6 +22,7 @@ public class SaleController {
 	@Autowired
 	private SaleService service;
 	
+	@Autowired
 	private SmsService smsService;
 	
 	@GetMapping
